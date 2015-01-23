@@ -2,7 +2,7 @@ tidy_data <- function(){
   
 
   
- 
+# import libraries tidyr and dplyr 
   library(tidyr)
   library(dplyr)
   
@@ -26,10 +26,10 @@ tidy_data <- function(){
   z_merge <- rbind(e,f)
 
 
-
+# read the variables names from the features.txt and assign then to variable features
   features <- read.table("features.txt")
 
-# transformacion a vector de las variables leidas en el paso anterior
+# transform to the variables names read in the last step 
 
   names <- as.vector(features[["V2"]])
 
@@ -37,24 +37,24 @@ tidy_data <- function(){
 
   valid_names <- make.names(names, unique = TRUE)
  
- # asignacion de los valores definidos en el paso anterior
+ # assign the values defined in the last step 
   
   colnames(x_merge) <- valid_names 
 
   x_select <- select(x_merge, contains("mean"), contains("std"), -contains("angle"))
 
   
-# leer datos del archivo 
+# read data from the activity_lebels.txt file
 
   activities <-read.table("activity_labels.txt") 
 
-# asignacion de la columna activity al archivo z_merge
+# assign the name of the column activity to the the z_merge variable 
 
   colnames(y_merge) <- "activitycode"
 
   colnames(activities) <-c("activitycode", "activitynames")
 
-# asignacion del nombre subject a los datos de z_merge
+# assign the names subject to the data of z_merge 
 
   colnames(z_merge) <- "subject"
 
