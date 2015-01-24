@@ -96,10 +96,9 @@ tidy_data <- function(){
 
 # export the tidy data 
 
-write.csv(dataset, file ="dataset.csv")
-write.csv(final_data, file = "tidy_data.csv")
+write.table(final_data, file = "tidy_data.txt", row_names=FALSE)
 
-print("dataset.csv and tidy_data.csv has been created in your working directory")
+print("tidy_data.csv has been created in your working directory")
 
 }
 
